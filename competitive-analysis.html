@@ -1,0 +1,908 @@
+
+<title>Language App Landscape 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F2F4F3; --paper:#FBFBFA; --ink:#182027; --ink-2:#465058; --ink-3:#6B757C;
+  --rule:#D5DAD8; --rule-soft:#E4E8E6;
+  --accent:#1D5C63; --accent-ink:#164A50; --accent-tint:#E1EEEE;
+  --warn:#8A5A12; --warn-tint:#F6ECD9;
+  --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Fraunces","Iowan Old Style",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#111718; --paper:#171E20; --ink:#E7ECEA; --ink-2:#B4BEBB; --ink-3:#8C9794;
+    --rule:#2E383A; --rule-soft:#232C2E;
+    --accent:#6CC4BC; --accent-ink:#8ED6CF; --accent-tint:#173436;
+    --warn:#E0B36A; --warn-tint:#2E2818;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#111718; --paper:#171E20; --ink:#E7ECEA; --ink-2:#B4BEBB; --ink-3:#8C9794;
+  --rule:#2E383A; --rule-soft:#232C2E;
+  --accent:#6CC4BC; --accent-ink:#8ED6CF; --accent-tint:#173436;
+  --warn:#E0B36A; --warn-tint:#2E2818;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;max-width:100%}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;margin:0}
+a{color:var(--accent-ink);text-decoration-color:var(--rule);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.masthead{border-bottom:1px solid var(--rule);background:var(--paper)}
+.masthead .inner{max-width:1180px;margin:0 auto;padding:40px 28px 32px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 14px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.5vw,52px);line-height:1.08;margin:0 0 16px;text-wrap:balance;letter-spacing:-.01em}
+.lede{font-size:19px;color:var(--ink-2);max-width:min(68ch,100%);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.meta b{color:var(--ink-2);font-weight:500}
+.layout{max-width:1180px;margin:0 auto;padding:36px 28px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;align-items:start}
+nav.toc{position:sticky;top:20px;font-size:14px;line-height:1.4}
+nav.toc .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+nav.toc ul{list-style:none;margin:0;padding:0}
+nav.toc>ul>li{margin:0 0 10px}
+nav.toc>ul>li>a{font-weight:600;color:var(--ink)}
+nav.toc ul ul{margin:4px 0 0 0;padding-left:12px;border-left:1px solid var(--rule-soft)}
+nav.toc ul ul li{margin:3px 0}
+nav.toc ul ul a{color:var(--ink-2);text-decoration:none}
+nav.toc ul ul a:hover{color:var(--accent-ink);text-decoration:underline}
+nav.toc ul ul ul{display:none}
+main{min-width:0}
+main>*{max-width:min(72ch,100%)}
+main>.tbl,main>hr{max-width:none}
+main h2{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.15;margin:56px 0 18px;text-wrap:balance;letter-spacing:-.005em}
+main h2:first-child{margin-top:0}
+main h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.25;margin:40px 0 12px;text-wrap:balance}
+main p{margin:0 0 16px}
+main ul,main ol{padding-left:22px;margin:0 0 18px}
+main li{margin:0 0 8px}
+main li::marker{color:var(--ink-3)}
+main ol>li::marker{font-family:var(--mono);font-size:14px;color:var(--accent-ink)}
+main hr{border:0;border-top:1px solid var(--rule);margin:48px 0}
+main strong{font-weight:600}
+main code{font-family:var(--mono);font-size:.88em;background:var(--accent-tint);padding:1px 5px;border-radius:3px}
+.tbl{overflow-x:auto;margin:20px 0 28px;border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.45;min-width:640px}
+thead th{text-align:left;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:500;padding:12px 14px;border-bottom:1px solid var(--rule);background:var(--ground);position:sticky;top:0}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;color:var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+tbody td:first-child{font-weight:600}
+td strong{color:var(--ink)}
+/* frustration / warning column: last column in matrix and 'Where it breaks' column */
+.tbl table td:last-child{color:var(--ink-2)}
+h2#executive-summary + ol{counter-reset:x;padding-left:0;list-style:none}
+h2#executive-summary + ol>li{position:relative;padding:14px 0 14px 44px;border-top:1px solid var(--rule-soft);margin:0}
+h2#executive-summary + ol>li:last-child{border-bottom:1px solid var(--rule-soft)}
+h2#executive-summary + ol>li::before{counter-increment:x;content:counter(x,decimal-leading-zero);position:absolute;left:0;top:16px;font-family:var(--mono);font-size:13px;color:var(--accent-ink)}
+h2#executive-summary + ol>li strong{font-family:var(--serif);font-weight:600;font-size:18px}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:24px}
+  nav.toc{position:static;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+  nav.toc ul ul{display:none}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+
+<header class="masthead"><div class="inner">
+<p class="eyebrow">Competitive analysis · September 2026</p>
+<h1>Language App Landscape 2026</h1>
+<p class="lede">How 30+ language learning products teach, retain and monetise, where they fall short, and a three-tier feature backlog for a conversation-first product launching with German.</p>
+<div class="meta"><span><b>Scope</b> Duolingo, Babbel, Busuu, Rosetta Stone, Memrise, Lingvist, ELSA, Speak, Pimsleur, Tandem, HelloTalk + AI-first, input-based and tutor products</span><span><b>Evidence</b> SEC filings, Duolingo research, Trustpilot, app store reviews, HN and Reddit</span></div>
+</div></header>
+<div class="layout"><nav class="toc"><p class="label">Contents</p><div class="toc">
+<ul>
+<li><a href="#executive-summary">Executive summary</a></li>
+<li><a href="#1-feature-architecture-and-core-mechanics">1. Feature Architecture and Core Mechanics</a><ul>
+<li><a href="#11-pedagogical-delivery">1.1 Pedagogical delivery</a></li>
+<li><a href="#12-ai-and-conversational-interfaces">1.2 AI and conversational interfaces</a></li>
+<li><a href="#13-multimodal-interactions-that-drive-engagement">1.3 Multimodal interactions that drive engagement</a></li>
+</ul>
+</li>
+<li><a href="#2-retention-motivation-and-habit-loops">2. Retention, Motivation and Habit Loops</a><ul>
+<li><a href="#21-gamification-mechanics-what-works-and-what-burns-users-out">2.1 Gamification mechanics: what works and what burns users out</a></li>
+<li><a href="#22-onboarding-and-personalisation">2.2 Onboarding and personalisation</a></li>
+<li><a href="#23-push-notification-and-re-engagement-strategy">2.3 Push notification and re-engagement strategy</a></li>
+</ul>
+</li>
+<li><a href="#3-competitor-feature-matrix">3. Competitor Feature Matrix</a></li>
+<li><a href="#4-white-space-analysis-and-market-gaps">4. White-Space Analysis and Market Gaps</a><ul>
+<li><a href="#41-speaking-fluency-and-real-world-conversation-readiness">4.1 Speaking fluency and real-world conversation readiness</a></li>
+<li><a href="#42-accessibility-cognitive-load-and-ui-clutter">4.2 Accessibility, cognitive load and UI clutter</a></li>
+<li><a href="#43-underserved-personas">4.3 Underserved personas</a></li>
+<li><a href="#44-pricing-and-trust-gaps">4.4 Pricing and trust gaps</a></li>
+<li><a href="#45-market-context">4.5 Market context</a></li>
+</ul>
+</li>
+<li><a href="#5-recommended-feature-backlog">5. Recommended Feature Backlog</a><ul>
+<li><a href="#tier-1-table-stakes-must-have-for-mvp">Tier 1: Table Stakes (must-have for MVP)</a></li>
+<li><a href="#tier-2-key-differentiators">Tier 2: Key Differentiators</a></li>
+<li><a href="#tier-3-delighters">Tier 3: Delighters</a></li>
+</ul>
+</li>
+<li><a href="#appendix-a-evidence-highlights-by-source-type">Appendix A: Evidence highlights by source type</a></li>
+<li><a href="#appendix-b-caveats">Appendix B: Caveats</a></li>
+</ul>
+</div>
+</nav><main><p>Prepared September 2026 for the learnDE product team. Covers 30+ products: the ten named incumbents (Duolingo, Babbel, Memrise, Busuu, ELSA Speak, Speak, Pimsleur, Lingvist, Tandem, HelloTalk, Rosetta Stone) plus AI-first challengers (Praktika, TalkPal, Loora, Langua, Jumpspeak, Univerbal, Gliglish), input-based and web tools (LingQ, Lingopie, Language Reactor, Readlang, Clozemaster, Anki, Glossika, Speakly, Mango, Language Transfer, Michel Thomas), tutor marketplaces (italki, Preply, Lingoda, Cambly), and general assistants acting as competitors (ChatGPT Voice, Gemini Live, Google Little Language Lessons).</p>
+<p>Sources: company blogs and press releases, SEC filings (Duolingo shareholder letters through Q2 2026), Duolingo research papers, Trustpilot, App Store and Play Store reviews, Hacker News and Reddit threads, and independent review sites. Prices vary by region and promotion; treat them as indicative. Claims that rest on a single secondary source are flagged.</p>
+<hr />
+<h2 id="executive-summary">Executive summary</h2>
+<ol>
+<li><strong>The category has converged on one shape</strong>: a gamified beginner course (A1 to A2) plus a bolted-on AI conversation partner sold in a premium tier. Every incumbent shipped an AI chat or call feature between 2024 and 2026. Reviewers rate most of them shallow and say "you can get this free in ChatGPT".</li>
+<li><strong>Duolingo owns the habit layer, not the outcome layer.</strong> 58.7M daily users, 84% current-user retention, 600+ streak experiments. Its own effectiveness studies show reading and listening gains; speaking and real listening lag. The 2025 Energy system and AI-first pivot cost it brand trust with free and long-streak users.</li>
+<li><strong>The unmet need is B1 to B2 output practice with durable feedback.</strong> "I finished the tree and can't hold a conversation" is the single most repeated sentiment across HN, Reddit and review sites. Apps built for this (Langua, Speak) are web-first, English-heavy, or lack a curriculum.</li>
+<li><strong>Billing friction is the loudest one-star driver in the whole category</strong>, ahead of pedagogy. Card-gated trials converting to annual charges, hidden cancel flows, credits that never refund. A transparent pricing model is the cheapest reputational differentiator available.</li>
+<li><strong>Accessibility is owned by nobody.</strong> Screen-reader-broken exercises, drag-only word tiles, timers, tiny targets and guilt notifications exclude blind, motor-impaired, ADHD, dyslexic and older learners.</li>
+<li><strong>Human exchange has a trust problem AI has not solved.</strong> Tandem and HelloTalk both sit at 2.7/5 on Trustpilot for harassment, dating misuse, ghosting and arbitrary bans.</li>
+<li><strong>Professional and exam personas are served only by niche apps and free public portals.</strong> For a German-focused product this means nurses and engineers relocating for work, Anerkennung B2 requirements, telc, Goethe, TestDaF and DTZ exam formats, and Integrationskurs alignment.</li>
+</ol>
+<hr />
+<h2 id="1-feature-architecture-and-core-mechanics">1. Feature Architecture and Core Mechanics</h2>
+<h3 id="11-pedagogical-delivery">1.1 Pedagogical delivery</h3>
+<p>Five distinct pedagogical families exist in the market. Most successful products blend two.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Representative apps</th>
+<th>How it teaches</th>
+<th>Where it breaks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gamified translation drills with implicit grammar</td>
+<td>Duolingo, Mondly, Drops</td>
+<td>Short tap and type exercises in a linear path; grammar via optional "Guidebook" tips; stories folded into the path</td>
+<td>Narrow input, ceiling near A2; speaking is binary pass/fail; "grammatically valid Japanese no native would say" (AI content)</td>
+</tr>
+<tr>
+<td>Explicit CEFR curriculum with dialogues</td>
+<td>Babbel, Busuu, Lingoda, Mango</td>
+<td>10-15 minute lessons: vocabulary in context, dialogue, explicit grammar note, then spaced review; Busuu adds native-speaker video and community corrections</td>
+<td>Progress "slow beyond beginner levels"; little open-ended output; Babbel Live (human classes) discontinued for consumers mid-2025</td>
+</tr>
+<tr>
+<td>Immersion without translation</td>
+<td>Rosetta Stone</td>
+<td>Image-word-audio inference, TruAccent pronunciation scoring on every prompt; 2026 "Sapphire" adds text Chat Missions (web only)</td>
+<td>"Adults aren't children"; abstract vocabulary impossible via stock photos; no grammar explanations</td>
+</tr>
+<tr>
+<td>Frequency-ordered vocabulary with SRS</td>
+<td>Memrise, Lingvist, Clozemaster, Glossika, Speakly, Anki</td>
+<td>Sentence-context cloze cards, adaptive intervals (Lingvist), fixed expanding intervals (Memrise), FSRS (Anki), mass sentence repetition (Glossika)</td>
+<td>Vocabulary "in a vacuum", no speaking; Lingvist users run out of new words after ~15 months; Memrise removed community courses</td>
+</tr>
+<tr>
+<td>Comprehensible input</td>
+<td>LingQ, Lingopie, Language Reactor, Dreaming Spanish, Readlang</td>
+<td>Import any text or video; click-to-look-up; words progress unknown to known; dual subtitles; hours-tracked roadmaps</td>
+<td>Not for beginners; cluttered UI (LingQ); literal AI translations (Lingopie); no structured path</td>
+</tr>
+<tr>
+<td>Audio-only graduated recall</td>
+<td>Pimsleur, Language Transfer, Michel Thomas</td>
+<td>30-minute hands-free lessons with anticipation prompts at expanding intervals; "thinking method" reasoning out answers</td>
+<td>Scripted, formal register, "mind-numbingly" repetitive; no reading, writing or native listening; Michel Thomas audio is ~85% English instructor</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cross-cutting observations:</p>
+<ul>
+<li><strong>Spaced repetition is universal but uneven in quality.</strong> Duolingo's Half-Life Regression (2016) and Birdbrain difficulty model absorb forgetting curves into one network updated after every exercise. Anki's open-source FSRS-6 predicts recall better than SM-2 for ~99.5% of collections and needs 20-30% fewer reviews for equal retention. Memrise still uses a fixed schedule (4h, 12h, 24h, 6d, 12d, 48d, 96d, 6 months).</li>
+<li><strong>Grammar is the fault line between "fun" and "serious" apps.</strong> Duolingo and Rosetta Stone teach it implicitly and get criticised by adults who "want someone to confirm or correct" their theory. Babbel and Busuu teach it explicitly and are recommended for intermediates. Nobody does both well: explanation on demand inside an implicit flow.</li>
+<li><strong>Speaking is now marketed as core by every leader</strong> (Duolingo Q1 2026: "speaking is now a core part of the product"; Speak: 1B+ spoken sentences per year) but most speaking exercises remain read-this-sentence-aloud with a green tick or red cross.</li>
+<li><strong>Story and scenario framing has won over topic lists.</strong> Duolingo Stories and Adventures, Memrise scenarios ("ordering food"), Speak's situational roleplays with three objectives, Univerbal's "Language Quests". Users engage more with a task to complete than a vocabulary set to finish.</li>
+</ul>
+<h3 id="12-ai-and-conversational-interfaces">1.2 AI and conversational interfaces</h3>
+<p>State of the art as of September 2026, ranked by technical depth:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Leaders</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speech-to-speech conversation (no transcribe-then-LLM-then-TTS chain)</td>
+<td>Speak (OpenAI GPT-4o Realtime)</td>
+<td>Removes the lag users describe as "waiting for the robot"; weaker at strict instruction-following and phoneme scoring, so Speak keeps a separate Pronunciation Coach</td>
+</tr>
+<tr>
+<td>Phoneme-level pronunciation scoring</td>
+<td>ELSA (proprietary ASR on ~200M hours of learner audio), Rosetta TruAccent, Pimsleur Voice Coach</td>
+<td>ELSA colour-codes each sound and shows mouth-position tips; general LLM apps (TalkPal, Duolingo Video Call) have no phoneme scoring at all</td>
+</tr>
+<tr>
+<td>Configurable correction style</td>
+<td>Langua (subtle / explicit / post-call), Speak (in-roleplay hints), Duolingo (post-call recap)</td>
+<td>The field is converging on learner-controlled interruption rather than always-on nagging</td>
+</tr>
+<tr>
+<td>Persistent memory across sessions</td>
+<td>Langua (viewable, editable memories since Aug 2025), Duolingo Lily (remembers past calls), Speak Premium Plus (frequent-mistake targeting)</td>
+<td>Absence of memory is now a named complaint against Loora, Praktika, Jumpspeak ("repeats herself", "lost context")</td>
+</tr>
+<tr>
+<td>Avatar video-call tutors</td>
+<td>Praktika (photoreal avatars), Duolingo Video Call with Lily (Rive animation), ELSA avatars</td>
+<td>Evidence of outcome benefit is thin; reviewers call avatars "distracting" and ask for audio-only; Praktika has no audio-only mode</td>
+</tr>
+<tr>
+<td>Chat-about-your-own-content</td>
+<td>Langua (text and audio import, July 2026), LingQ (AI transcription and simplification), Lingopie Netflix extension (April 2026)</td>
+<td>Strong for intermediates; absent from every mass-market incumbent</td>
+</tr>
+<tr>
+<td>Explain-my-answer</td>
+<td>Duolingo (made free to all in Jan 2026, per third-party pricing guides), Lingopie Grammar Coach, Memrise Grammar Buddy</td>
+<td>Quality complaints: "shallow", "literal", occasional language mixing</td>
+</tr>
+<tr>
+<td>AI-generated curriculum at scale</td>
+<td>Duolingo (148 courses in April 2025; 20,500 course units in Q1 2026 vs 7,100 per quarter in 2025)</td>
+<td>Triggered the "AI slop" backlash; smaller courses (Irish, Japanese) show awkward phrasing and errors</td>
+</tr>
+</tbody>
+</table></div>
+<p>Where each incumbent gates its AI:</p>
+<ul>
+<li>Duolingo: Video Call and Roleplay in Max (~$168/yr), now migrating down into Super per the Q2 2026 letter. Max was 5% of subscribers at end-2024.</li>
+<li>Babbel Speak (Sept 2025): 28 guided scenarios per language pair, five languages, included in subscription. Guided, not free-form.</li>
+<li>Busuu Conversations (Oct 2024): Premium Plus, initially iOS only.</li>
+<li>Memrise MemBot and AI Buddies: Pro. "Works for basics but lacks conversational depth."</li>
+<li>Rosetta Stone Chat Missions (2026): text-only, browser-only, 25 languages.</li>
+<li>Lingvist: no conversational AI at all.</li>
+<li>Tutor marketplaces (Preply, italki, Lingoda, Cambly): AI framed as homework between human lessons, not a tutor replacement. Users are confused when it is bundled without a clear purpose ("Where is AI?").</li>
+</ul>
+<p><strong>The free competitor.</strong> ChatGPT Voice and Gemini Live (40+ languages, mid-conversation switching, LearnLM Guided Learning) are repeatedly described as "the most underrated language learning tool" and as equal to Duolingo Max's conversation quality. Dedicated apps survive by offering what assistants lack: phoneme scoring, a curriculum, SRS integration, dialect-specific cloned voices, and durable artifacts (error logs, flashcards, level trajectory).</p>
+<h3 id="13-multimodal-interactions-that-drive-engagement">1.3 Multimodal interactions that drive engagement</h3>
+<p>Interaction inventory across the category, with what users say about each:</p>
+<p><strong>High engagement, low complaint</strong>
+- Tap-to-order word tiles (Duolingo, Busuu, Babbel): fast, satisfying, works for grammar order. Accessibility problem: drag-only variants exclude motor-impaired users; WCAG 2.2 expects a tap alternative.
+- Match pairs (word to translation, audio to text): the most-praised Duolingo exercise for "flow".
+- Push-to-talk speaking card with live transcript and per-word highlighting (Speak, ELSA): the moment users feel they are "actually talking".
+- In-chat correction with red strikethrough and green rewrite (HelloTalk, Tandem): the single best-liked UI pattern in exchange apps.
+- Interactive dual subtitles with click-to-pause and sentence loop (Lingopie, Language Reactor, LingQ sentence mode): intermediates' favourite.
+- Hands-free driving mode with CarPlay and Android Auto (Pimsleur): "the one interaction pattern learners consistently praise" in the audio segment.
+- Roleplay objective checklist (Speak's three in-scene goals, Rosetta Chat Missions): converts open chat into a task with a finish line.
+- Home and lock-screen widgets with a mascot whose mood changes toward midnight (Duolingo): half of widget users hold a 6-month+ streak.</p>
+<p><strong>Engaging but polarising</strong>
+- Timed exercises and lightning rounds: engagement for some, "frantic tapping with little retention" for ADHD and older users.
+- Photoreal avatar calls (Praktika): novelty appeal, then "distracting"; audio-only requested.
+- Mnemonic image "Mems" (Memrise, now AI-generated): loved by long-time users, thinner since the redesign.</p>
+<p><strong>Low engagement or actively disliked</strong>
+- Binary pass/fail speech recognition with no explanation of what was wrong (Duolingo, Babbel, Busuu).
+- Waveform-matching instead of real speech recognition (Mango).
+- Stock-photo image grids for abstract vocabulary (Rosetta Stone).
+- Interstitial upsells "every 30 to 90 seconds" (Duolingo free tier).</p>
+<hr />
+<h2 id="2-retention-motivation-and-habit-loops">2. Retention, Motivation and Habit Loops</h2>
+<h3 id="21-gamification-mechanics-what-works-and-what-burns-users-out">2.1 Gamification mechanics: what works and what burns users out</h3>
+<p><strong>What the data says works (Duolingo's published numbers)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Mechanic</th>
+<th>Published effect</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current User Retention (CURR) as north-star</td>
+<td>~6x the DAU impact of MAU-oriented levers; CURR 84% in Q2 2026, rising ~1 point/year</td>
+<td>Mazal, Lenny's Newsletter; Q2 2026 shareholder letter</td>
+</tr>
+<tr>
+<td>Streaks</td>
+<td>Users with 7+ day streaks tripled to &gt;50% of DAU; 10M+ users hold 1-year+ streaks</td>
+<td>Mazal; Q4 2024 letter</td>
+</tr>
+<tr>
+<td>Streak Wager (bet gems on 7 days)</td>
+<td>D7 retention +14%</td>
+<td>Duolingo blog</td>
+</tr>
+<tr>
+<td>Weekend Amulet</td>
+<td>+4% week-later return, 5% lower streak loss</td>
+<td>Duolingo blog</td>
+</tr>
+<tr>
+<td>Leaderboards / leagues</td>
+<td>+17% total learning time; highly engaged learners tripled</td>
+<td>Mazal</td>
+</tr>
+<tr>
+<td>Friend Streaks</td>
+<td>Learners with a shared streak 22% more likely to complete a daily lesson; one-third of DAU have one</td>
+<td>Duolingo blog; Q4 2024 letter</td>
+</tr>
+<tr>
+<td>Widget</td>
+<td>Half of widget users have a 6-month+ streak; better retention controlling for self-selection</td>
+<td>Duolingo engineering blog</td>
+</tr>
+<tr>
+<td>Signup after first lesson</td>
+<td>+20% DAU (as retold by Appcues and others)</td>
+<td>Mazal</td>
+</tr>
+<tr>
+<td>Streak Revival event (June 2026)</td>
+<td>15.4M streaks restored, 8M from previously inactive users; DAU growth re-accelerated to +23%</td>
+<td>Q2 2026 letter</td>
+</tr>
+<tr>
+<td>Energy replacing Hearts (2025)</td>
+<td>Raised DAU, median learning time and conversion at once</td>
+<td>Q2 2025 letter</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What causes burnout and churn</strong></p>
+<ul>
+<li><strong>Streak maintenance replaces learning.</strong> "Logging in at midnight to protect the streak without having studied anything in weeks." Silverman and Barasch (Journal of Consumer Research, 2023) show users treat the streak as the goal and drop off after a break, especially when they blame themselves. A repair option attenuates the drop, which justifies Streak Repair.</li>
+<li><strong>Leagues create XP farming and sandbagging</strong>: grinding Practice for points, joining late in the week to dodge grinders, "late-night XP anxiety".</li>
+<li><strong>Energy punishes correct answers.</strong> Draining a unit per exercise regardless of correctness reads as "a cash grab" to free users; Android Authority ran "I'm finally quitting Duolingo after this change"; long-streak loyalists quit publicly. It also capped free practice at roughly 15-20 minutes a day.</li>
+<li><strong>Interruptions</strong>: pop-ups, badges, gem offers roughly every 30 to 90 seconds in the free tier.</li>
+<li><strong>AI-first backlash (April to August 2025)</strong>: streak-deletion videos, 400K+ lost TikTok followers, ~41% negative sentiment. DAU still grew 40% in Q2 2025 but at the low end of guidance. Von Ahn dropped AI usage from performance reviews by April 2026.</li>
+<li><strong>Community loss</strong>: forum removal in 2023 and volunteer contributor removal are still cited churn reasons.</li>
+</ul>
+<p><strong>The counter-movement.</strong> Memrise removed points and de-emphasised leaderboards, and built a "My Activities" view that "doesn't send reminders or notifications, a quiet, guilt-free space". Babbel and Rosetta Stone keep streaks minimal with no leagues or currency and market themselves "for adults". Speak, Langua and Praktika use streaks only. Review sites frame Duolingo as fun-first for beginners and Babbel or Busuu as the intermediate choice. There is a clear gap for retention mechanics that motivate adults without shame or punishment.</p>
+<h3 id="22-onboarding-and-personalisation">2.2 Onboarding and personalisation</h3>
+<p><strong>Common pattern (Duolingo, roughly 7 screens)</strong>: language, "how did you hear about us", motivation ("why are you learning"), daily goal (Casual 5 min to Intense 20 min), experience level, optional placement test, notification permission, first lesson, then account creation. Each step is both a commitment device and a personalisation signal.</p>
+<p><strong>Variations</strong>
+- Busuu: five-minute CEFR placement test that drops the learner into the right unit, plus a Study Plan asking for realistic weekly minutes and a target date. A softer commitment device than a daily streak.
+- Babbel: self-declared level (Newcomer to Advanced), weekly goal, short placement quiz for some languages.
+- Lingvist: placement is implicit; the SRS calibrates by skipping known words in the first cards.
+- ELSA: five-minute speech assessment produces a baseline score and a path highlighting weak sounds.
+- Praktika: asks for CEFR level (A1 to C1) but "does not map your learning against a CEFR path or gradually raise complexity".
+- Rosetta Stone: no adaptive placement at all, flagged as a weakness for returning learners.</p>
+<p><strong>Adaptive difficulty</strong>: Duolingo's Birdbrain updates learner ability and exercise difficulty after every exercise (teardown claims ~1.25B exercises/day). Lingvist adapts word selection in real time. Langua added CEFR-aligned grammar and "My Path" recommendations (July 2026). Everyone else is a static course with an open chat bolted on. Genuinely CEFR-tracked adaptive speaking remains a promise, not a shipped product.</p>
+<p><strong>Evidence on commitment devices</strong>: explicit commitments with a scheduled payoff (7-day wager) beat vague daily goals. Localised framing matters: telling German users "notifications are proven to foster learning success" lifted opt-in 8%, with no effect in Spanish.</p>
+<h3 id="23-push-notification-and-re-engagement-strategy">2.3 Push notification and re-engagement strategy</h3>
+<p><strong>Duolingo's playbook (from Jackson Shuttleworth, Sub Club podcast, and the KDD 2020 bandit paper)</strong>
+- Practice reminder fires <strong>23.5 hours after the last session</strong>; behavioural timing beats user-chosen times.
+- Daily reminders for <strong>up to 7 days</strong>, then practice pushes stop ("These reminders don't seem to be working. We'll stop sending them for now.")
+- Separate <strong>Streak Saver</strong> push before midnight.
+- Hard cap of roughly 2 pushes per day; tone shifts by state (active, wobbling, at-risk, dormant).
+- The best re-engagement window is <strong>days 1 to 4</strong> after a lapse.
+- Copy selected by a sleeping-recovering bandit over 200M notification examples: +0.5% total DAU, +2% new-user retention. A recency penalty models template fatigue.
+- Friend-initiated nudges out-click app-initiated ones; even leaderboard strangers beat standard campaigns.
+- The Handbook explicitly caps notifications "even when short-term metrics say otherwise".</p>
+<p><strong>Competitor behaviour</strong>: Babbel, Busuu, Rosetta Stone and Lingvist send a scheduled daily reminder at a chosen time. Their complaints are about promotional spam (Lingvist keeps pushing offers to paid users who disabled them), not tone. Memrise removed reminders from its activity view entirely.</p>
+<p><strong>Benchmarks</strong>: median push direct open rate ~3% (Airship 2025), top decile 8-11%. Education opt-in is near the top of categories (~94% Android). 64% of users say they will delete an app that sends 5+ pushes a week. iOS 18.2's revised prompt lifted iOS opt-in to ~54%.</p>
+<p><strong>Win-back at scale</strong>: the June 2026 Streak Revival event is the largest published resurrection campaign in the category. Management called it non-recurring, implying scarcity is part of its power. The 2025 "Duo dies" campaign (1B+ organic views) shows brand-level resurrection stunts also move numbers.</p>
+<p><strong>The cost</strong>: the passive-aggressive owl persona is effective and meme-generating, but anxiety complaints, especially around children, are real and documented (Screenwise, Lumi Academy).</p>
+<hr />
+<h2 id="3-competitor-feature-matrix">3. Competitor Feature Matrix</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>Primary value prop</th>
+<th>Standout signature feature</th>
+<th>Monetization / paywall trigger</th>
+<th>Common user frustration (App Store, Play Store, Reddit, Trustpilot)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Duolingo</strong></td>
+<td>Free, fun, five-minutes-a-day habit in 40+ languages</td>
+<td>Streak system with Friend Streaks, widgets and Video Call with Lily</td>
+<td>Free with ads and daily Energy cap; Super ~$84/yr removes limits; Max ~$168/yr adds Video Call and Roleplay; Family $120/yr</td>
+<td>Energy caps free practice and drains on correct answers; A2 ceiling ("26% fluent in idiot"); AI-first content quality; upsell interstitials; guilt notifications</td>
+</tr>
+<tr>
+<td><strong>Babbel</strong></td>
+<td>Linguist-built CEFR courses "for adults"</td>
+<td>Explicit grammar notes inside real-life dialogues; Babbel Speak guided AI scenarios</td>
+<td>First lesson free; ~$8-15/mo, lifetime $599 list (often ~$299); 20-day refund</td>
+<td>Auto-renewal and refund disputes dominate Trustpilot; slow progress past beginner; Babbel Live discontinued; only 14 languages</td>
+</tr>
+<tr>
+<td><strong>Busuu</strong></td>
+<td>Structured CEFR path with human feedback</td>
+<td>Community of native speakers corrects your written and spoken exercises; AI Conversations</td>
+<td>Free limited lessons with ads; Premium ~$6-15/mo; Premium Plus for AI and offline</td>
+<td>Silent auto-renewal; inconsistent volunteer corrections; app "not updated in years"; Chegg parent in distress</td>
+</tr>
+<tr>
+<td><strong>Rosetta Stone</strong></td>
+<td>Immersion without translation</td>
+<td>TruAccent graded pronunciation on every prompt; 2026 Sapphire Chat Missions</td>
+<td>3-day trial, no free tier; ~$12/mo annual; lifetime $199-299, often $149</td>
+<td>No grammar explanation ("adults aren't children"); dated stock photos; no placement test; lifetime buyers asked to pay again; cancellation page "fails to load"</td>
+</tr>
+<tr>
+<td><strong>Memrise</strong></td>
+<td>Vocabulary plus native-speaker video</td>
+<td>Thousands of "Learn with Locals" native clips; scenario-based SRS; MemBot AI chat</td>
+<td>Free with daily caps; Pro ~$23/mo or ~$62-90/yr; lifetime ~$250-330</td>
+<td>Community courses removed (2024), "most controversial change in its history"; content thins after beginner; monthly price "steep for a vocab app"</td>
+</tr>
+<tr>
+<td><strong>Lingvist</strong></td>
+<td>Fastest route to the 4-5K highest-frequency words</td>
+<td>Adaptive cloze SRS that skips known words; Course Wizard generates decks from any text</td>
+<td>~50 words/day free; ~$80/yr; lifetime ~$100; 14-day card-gated trial</td>
+<td>"Pretends to work free"; runs out of new vocabulary after ~15 months; no speaking; promo pushes to paid users</td>
+</tr>
+<tr>
+<td><strong>ELSA Speak</strong></td>
+<td>Fix your English pronunciation</td>
+<td>Phoneme-level colour-coded scoring on 200M hours of learner audio; IELTS band estimator; Speech Analyzer for uploaded recordings</td>
+<td>Free daily caps; ~$160/yr; lifetime $250; Pro tier for unlimited AI roleplay</td>
+<td>Trial converts to $130 annual "without clear notification"; no in-app subscription management; dated UI; inflated scores; English only</td>
+</tr>
+<tr>
+<td><strong>Speak</strong></td>
+<td>Learn by talking, not tapping</td>
+<td>Speech-to-speech Live Roleplay on GPT-4o Realtime with three in-scene objectives</td>
+<td>Trial only, no free tier; Premium ~$84/yr; Premium Plus ~$165/yr for unlimited custom lessons</td>
+<td>ASR mishears accents yet passes mispronunciations; American English only, no dialect choice; repetitive at higher levels; six languages</td>
+</tr>
+<tr>
+<td><strong>Pimsleur</strong></td>
+<td>Hands-free audio fluency in 30 minutes a day</td>
+<td>Graduated Interval Recall with CarPlay and Android Auto driving mode</td>
+<td>$20/mo per language; 7-day trial; lifetime ~$299 on deal</td>
+<td>"Mind-numbingly" repetitive phrases; formal register; one lesson a day gating; phone-only cancellation</td>
+</tr>
+<tr>
+<td><strong>Tandem</strong></td>
+<td>1-to-1 language exchange with natives</td>
+<td>Correction preferences (flag every mistake vs general feedback); Parties audio rooms; Tandem GPT</td>
+<td>Free: 3-5 translations and 10 new chats/day; Pro $80/yr</td>
+<td>Dating-app misuse ("Hey beautiful"), scammers, ghosting after 3 exchanges, bans without explanation; "paying to fix problems that shouldn't exist"</td>
+</tr>
+<tr>
+<td><strong>HelloTalk</strong></td>
+<td>Free exchange at scale (70M+ users, 260 languages)</td>
+<td>In-chat red-strikethrough / green-rewrite correction; Moments feed; Voicerooms with Azure live captions</td>
+<td>~90% free; VIP $5-10/mo unlocks unlimited translation and gender/location filters</td>
+<td>Harassment of women; arbitrary bans of paying VIPs; political censorship; gender filters "enable targeted misuse"</td>
+</tr>
+<tr>
+<td><strong>Praktika</strong></td>
+<td>A human-feeling AI tutor at app prices</td>
+<td>Photoreal lip-synced avatar tutors with personalities</td>
+<td>7-day card trial; $50 per 3 months minimum; $120/yr</td>
+<td>Trial charges full annual early; avatar "repeats herself"; no audio-only mode; no CEFR progression</td>
+</tr>
+<tr>
+<td><strong>TalkPal</strong></td>
+<td>Breadth: 130+ languages, nine practice modes</td>
+<td>Photo mode (describe an AI image), Characters, Debate</td>
+<td>10 min/day free; ~$90-120/yr</td>
+<td>Robotic voices; no grammar syllabus; feedback depth "extremely limited"; charges after cancellation</td>
+</tr>
+<tr>
+<td><strong>Loora</strong></td>
+<td>Workplace English coach for professionals</td>
+<td>Hands-free continuous conversation, no push-to-talk</td>
+<td>~$119/yr, or ~$30/mo weekly-renewing; "most expensive in category"</td>
+<td>Hard-to-cancel "partially fraudulent practices"; forgets earlier sessions; surface-level topics</td>
+</tr>
+<tr>
+<td><strong>Langua</strong></td>
+<td>Intermediate-plus conversation with real voices</td>
+<td>Cloned native-speaker dialect voices; editable AI memory; subtle/explicit/post-call correction modes; import your own audio</td>
+<td>Communicate plan capped at 75 messages and 30 call-minutes a day; Unlimited ~$200/yr; 30-day refund</td>
+<td>Slow AI chat at times; web-first UX on mobile; not for absolute beginners; price</td>
+</tr>
+<tr>
+<td><strong>LingQ</strong></td>
+<td>Comprehensible input from any content</td>
+<td>Word-status colouring (blue to yellow to known) across imported text, audio and video</td>
+<td>20 saved words free (demo only); ~$10/mo annual; Premium Plus ~$22/mo</td>
+<td>Cluttered interface; "non-transparent billing"; unapproachable support; no structure for beginners</td>
+</tr>
+<tr>
+<td><strong>Lingopie</strong></td>
+<td>Learn from real TV and film</td>
+<td>Dual-language interactive subtitles with click-to-save flashcards; Netflix Chrome extension (2026)</td>
+<td>~$144/yr; lifetime $760 list; 7-day trial</td>
+<td>Difficult cancellation; literal AI translations; shallow Grammar Coach; better for intermediates</td>
+</tr>
+<tr>
+<td><strong>italki</strong></td>
+<td>Pay-per-lesson human tutors</td>
+<td>Marketplace from $5/hr community tutors; italki Plus AI homework</td>
+<td>No subscription; credits per lesson; Plus ~$6/mo</td>
+<td>Credits never refund to cash, expire after 12 months; teacher no-shows; 40% tutor commission; "detest the AI tools"</td>
+</tr>
+<tr>
+<td><strong>Preply</strong></td>
+<td>Human-led, AI-enhanced tutoring</td>
+<td>Lesson Insights, Daily Exercises and Scenario Practice generated from your tutor lesson (OpenAI)</td>
+<td>Weekly-hours auto-renewing subscription</td>
+<td>Impossible to pause; refunds void once any hour used; cancel means losing paid lessons; chatbot support</td>
+</tr>
+<tr>
+<td><strong>Lingoda</strong></td>
+<td>Live CEFR group classes on Zoom</td>
+<td>Sprint cashback challenge; AI class reports</td>
+<td>~$8-23 per class; Marathon ~EUR 369/mo</td>
+<td>72-hour cancellation forfeits credit; popular slots full; "too much English in class"</td>
+</tr>
+<tr>
+<td><strong>Mango Languages</strong></td>
+<td>Library-funded, 70+ languages incl. endangered</td>
+<td>Colour-coded literal vs loose translation chunks</td>
+<td>Free via public libraries; $8-18/mo</td>
+<td>"Far too shallow", ends around B1; waveform matching, not speech recognition</td>
+</tr>
+<tr>
+<td><strong>Glossika</strong></td>
+<td>Mass sentence repetition, 60+ languages</td>
+<td>3,000 sentences per language with six practice modes</td>
+<td>$199-399/yr</td>
+<td>Overpriced for one language; errors in materials; no grammar; monotone voices</td>
+</tr>
+<tr>
+<td><strong>ChatGPT Voice / Gemini Live</strong></td>
+<td>Free, unlimited conversation in 40+ languages</td>
+<td>Mid-conversation language switching; Guided Learning scaffolding</td>
+<td>Free or bundled with general subscription</td>
+<td>No curriculum, no pronunciation scoring, no SRS, no progress tracking</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="4-white-space-analysis-and-market-gaps">4. White-Space Analysis and Market Gaps</h2>
+<h3 id="41-speaking-fluency-and-real-world-conversation-readiness">4.1 Speaking fluency and real-world conversation readiness</h3>
+<p><strong>The gap in one sentence</strong>: apps grade recitation, not communication. Reading a sentence aloud into a binary pass/fail recogniser is what Duolingo, Babbel, Busuu and Mango call "speaking". Even Speak and Duolingo Video Call get "AI conversations that loop the same three phrases" and calls that "last about 30 seconds".</p>
+<p>Specific gaps no leader closes:</p>
+<ol>
+<li><strong>No bridge between scripted and free speech.</strong> Products are either fully scripted (Pimsleur, Babbel Speak's 28 guided scenarios) or fully open (TalkPal, ChatGPT). Nobody scaffolds from "repeat this" to "answer with a hint" to "say it another way" to "improvise" inside one scene.</li>
+<li><strong>Correction without conversation flow.</strong> Always-on correction interrupts; end-of-call recaps arrive too late to fix a habit. Only Langua lets learners choose subtle, explicit or post-call correction, and it is web-first.</li>
+<li><strong>Pronunciation and conversation are separate products.</strong> ELSA scores phonemes but conversation is thin; Speak converses fluently but its recogniser "mishears clear accented speech" and passes mispronunciations. No end-to-end speech model does both well yet, so the winning architecture is speech-to-speech for flow plus a dedicated scoring path for drills.</li>
+<li><strong>Dialect and accent choice is almost absent.</strong> Speak defaults to American English with no British or Australian option; Spanish variant selection is rare; Arabic apps force a choice of MSA or one dialect; Swiss German apps are "mainly for tourists". Langua's cloned regional voices are the only serious attempt. For German this means Austrian and Swiss variants, regional register, and Hochdeutsch vs colloquial speech.</li>
+<li><strong>Listening to real natives is untrained.</strong> Michel Thomas is 85% English instructor audio; Pimsleur is studio-clean and formal; Duolingo TTS is uniform. Learners report being "almost entirely useless" in real conversation despite daily practice. Busuu and Memrise native video clips are the exception, and both are short.</li>
+<li><strong>No durable artifacts from speaking.</strong> Conversations evaporate. TalkPal, Jumpspeak, Praktika and Loora have no error log, no SRS card from a mistake, no level trajectory. Langua logs vocabulary to flashcards; Speak Premium Plus targets frequent mistakes. Both are paywalled top tiers.</li>
+<li><strong>Human exchange is unsafe and unproductive.</strong> Tandem and HelloTalk score 2.7/5. "Most conversations lasted less than three exchanges." A supervised, structured, AI-moderated way to reach real humans does not exist.</li>
+</ol>
+<h3 id="42-accessibility-cognitive-load-and-ui-clutter">4.2 Accessibility, cognitive load and UI clutter</h3>
+<ul>
+<li><strong>Screen readers</strong>: AppleVis threads document Duolingo ads that cannot be exited in VoiceOver, Continue buttons that do nothing on double-tap, no audio cue for right or wrong answers. A design critique calls it "visual-first design excluding the blind learners the platform claims to serve".</li>
+<li><strong>Motor impairment</strong>: drag-and-drop word tiles are "a massive barrier for users with motor tremors". WCAG 2.2 requires a single-pointer alternative.</li>
+<li><strong>ADHD and dyslexia</strong>: "bright animations, endless notifications, crowded lesson screens, pressure to maintain streaks"; hearts and timers produce "frantic tapping with little retention". Requests: dyslexia-friendly fonts, adjustable spacing, synchronised text-to-speech highlighting, no timers by default.</li>
+<li><strong>Older adults</strong>: "tiny fonts, low-contrast backgrounds, tap targets smaller than a fingertip"; the "figure it out from patterns" pedagogy frustrates adults who want rules confirmed. Cambridge ReCALL research confirms older learners want explicit correction.</li>
+<li><strong>Hearing-impaired</strong>: listening exercises with no transcript fallback; speaking tasks with no alternative modality.</li>
+<li><strong>Cognitive load and clutter</strong>: Duolingo's free tier interrupts roughly every 30 to 90 seconds with pop-ups, badges, gems and upsells. LingQ and italki are called "cluttered" after redesigns. Lingopie's dashboard is "confusing". Memrise's redesign "cluttered" a previously simple app.</li>
+<li><strong>Children</strong>: speech grading produces false negatives on genuinely close attempts; uncurated ads in the free tier; documented streak anxiety.</li>
+</ul>
+<p>Not a single competitor markets accessibility as a feature. Meeting WCAG 2.2 AA with tap alternatives, no default timers, large targets, transcripts everywhere and a quiet mode would be a category first.</p>
+<h3 id="43-underserved-personas">4.3 Underserved personas</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>What they need</th>
+<th>Who serves them today</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intermediate plateau learners (B1 to B2)</strong></td>
+<td>Varied real input, output practice, feedback on nuance, grammar on demand</td>
+<td>Langua, LingQ, Lingopie, tutors; new niche apps (BlablaPal, Polygloss)</td>
+<td>Every mass-market app ends at A2 or B1; HN: "There's no one resource that will get you to even an intermediate level"; JLPT learners call N3 to N2 the "Valley of Death"</td>
+</tr>
+<tr>
+<td><strong>Professional relocators</strong> (nurses, engineers, IT workers moving to Germany, Netherlands, Japan)</td>
+<td>Domain vocabulary (Pflege, Handwerk, Büro), register for workplace, B2 for Anerkennung, telc B2 Pflege exam format</td>
+<td>Tiny niche apps ("German for Nurses"), Elsevier textbooks, Deutsch am Arbeitsplatz, Loora (English only)</td>
+<td>Generalist apps have no domain tracks; B2 Anerkennung requirement is a hard, dated, high-stakes goal nobody maps to</td>
+</tr>
+<tr>
+<td><strong>Exam candidates</strong> (Goethe, telc, TestDaF, DTZ, DELF, JLPT, IELTS)</td>
+<td>Exam-format speaking and writing practice with rubric scoring, timed mocks</td>
+<td>ELSA (IELTS band estimator), GPP Goethe Prep, Gibi Exam Prep, Bunpro, WaniKani</td>
+<td>Mainstream apps offer no exam-format practice; speaking-part rehearsal with examiner-style AI is wide open</td>
+</tr>
+<tr>
+<td><strong>Immigrants and integration-course learners</strong></td>
+<td>Alignment with Integrationskurs curriculum and DTZ; menus in their own language; life-admin scenarios (Ausländerbehörde, Jobcenter, Kita)</td>
+<td>vhs-Lernportal (free, BAMF-recognised, A1 to C1, menus in 20 languages)</td>
+<td>Commercial apps ignore this population entirely</td>
+</tr>
+<tr>
+<td><strong>Heritage speakers</strong></td>
+<td>Start from listening comprehension, fix production and literacy, no zero-level insult</td>
+<td>eTandem exchange (academic literature)</td>
+<td>Every app starts from zero; Duolingo blogs about "no sabo kids" but has no track</td>
+</tr>
+<tr>
+<td><strong>Conversationalists vs test-preppers</strong></td>
+<td>Two different goals: sound natural and confident vs pass a rubric</td>
+<td>Speak and Praktika (conversation); ELSA (test)</td>
+<td>No product lets the learner switch goal mode with different scoring and content</td>
+</tr>
+<tr>
+<td><strong>Older adults</strong></td>
+<td>Explicit rules, large type, no timers, patient correction</td>
+<td>None explicitly</td>
+<td>Untapped and growing</td>
+</tr>
+<tr>
+<td><strong>Learners of dialects and regional variants</strong></td>
+<td>Austrian and Swiss German, Latin American vs Peninsular Spanish, Arabic dialects</td>
+<td>Langua cloned voices; uTalk and Mango for rare languages</td>
+<td>Almost no dialect choice anywhere</td>
+</tr>
+<tr>
+<td><strong>Kids</strong></td>
+<td>Curated, safe, no ads, no streak anxiety</td>
+<td>Duolingo ABC, Lingopie kids mode</td>
+<td>Duolingo for Schools sunsets July 2027</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="44-pricing-and-trust-gaps">4.4 Pricing and trust gaps</h3>
+<ul>
+<li>Trial-to-annual surprise charges are the top one-star driver for ELSA, Praktika, Loora, TalkPal, Jumpspeak, Lingopie, Babbel and Busuu.</li>
+<li>Cancellation friction: Rosetta Stone's cancellation page "fails to load", Pimsleur cancels by US phone line only, ELSA has no in-app subscription management, Preply cannot be paused.</li>
+<li>Credit traps: italki credits never refund to cash and expire after 12 months idle; Lingoda's Sprint forfeits credit at 72 hours.</li>
+<li>Lifetime-deal saturation (Babbel, Rosetta Stone, Memrise, Mondly) angers earlier full-price buyers; Rosetta "lifetime" buyers from 2018 were asked to pay again in 2022.</li>
+<li>Duolingo Max at ~$168/yr is "flat out too expensive" and its headline feature (Explain My Answer) went free in January 2026, undercutting the tier.</li>
+</ul>
+<p>A product with an in-app cancel button, a no-card trial, transparent minute or lesson caps, and renewal reminders would differentiate on Trustpilot alone.</p>
+<h3 id="45-market-context">4.5 Market context</h3>
+<ul>
+<li>Category revenue ~$1.54B in 2025 (+18.8%), 327M downloads; top five providers hold ~58% of revenue, up from 39% five years earlier.</li>
+<li>Duolingo FY2025 revenue $1.04B (+39%), 12.7M paid subscribers and 58.7M DAU by Q2 2026; 2028 target 100M DAU. Over 40% of Babbel, Busuu, Pimsleur and Rosetta users also use Duolingo; under 2.5% of Duolingo users use those rivals.</li>
+<li>Speak passed $100M annualised revenue at a ~$1.17B valuation; Preply raised $150M at $1.2B (Jan 2026); Praktika raised $35.5M on 1.2M MAU.</li>
+<li>Consolidation and exits: Mondly (Pearson) stops marketing June 2026; Duolingo for Schools sunsets July 2027; Chegg is restructuring around Busuu with a ~$48M 2026 revenue target.</li>
+<li>Retention benchmarks: cross-industry D1 ~25%, D7 ~12%, D30 5-7%; education D30 often 2-3%, with 10%+ considered strong. Duolingo's 84% CURR and 41.7% DAU/MAU are extreme outliers.</li>
+</ul>
+<hr />
+<h2 id="5-recommended-feature-backlog">5. Recommended Feature Backlog</h2>
+<p>Organised for a new product whose wedge is <strong>conversation readiness for adult learners from A2 upward</strong>, with German as the launch language given the learnDE context. Each item names the competitor shortcoming it answers.</p>
+<h3 id="tier-1-table-stakes-must-have-for-mvp">Tier 1: Table Stakes (must-have for MVP)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Why it is baseline</th>
+<th>Competitor reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CEFR-aligned structured path (A1 to B2) with explicit, on-demand grammar notes</td>
+<td>Adults and intermediates leave implicit-only apps; Babbel and Busuu are recommended for this reason</td>
+<td>Babbel, Busuu</td>
+</tr>
+<tr>
+<td>Spaced repetition using an FSRS-class scheduler that feeds from every exercise and conversation</td>
+<td>20-30% fewer reviews than SM-2 at equal retention; nobody in the mass market exposes this quality</td>
+<td>Anki FSRS, Lingvist</td>
+</tr>
+<tr>
+<td>Core exercise set: tap-to-order tiles (with tap-to-select alternative), match pairs, listen-and-type, fill-the-gap, speak-the-line</td>
+<td>The interaction vocabulary users already know</td>
+<td>Duolingo, Busuu</td>
+</tr>
+<tr>
+<td>AI conversation partner with speech-to-speech latency and a task checklist per scene</td>
+<td>Every incumbent has one; latency and "three objectives" framing are the current bar</td>
+<td>Speak, Duolingo Video Call</td>
+</tr>
+<tr>
+<td>Pronunciation feedback at the word level minimum, phoneme level on drill cards, with a separate scoring path from the conversation model</td>
+<td>Binary pass/fail is the top speaking complaint; no single model does both flow and scoring</td>
+<td>ELSA, Rosetta TruAccent</td>
+</tr>
+<tr>
+<td>Placement test (5 minutes) plus weekly time commitment and target-date study plan</td>
+<td>Softer commitment device than daily streaks; adults respond to a realistic plan</td>
+<td>Busuu Study Plan</td>
+</tr>
+<tr>
+<td>Streak with forgiveness built in: free freeze, 3-day repair window, weekend flexibility</td>
+<td>Streaks work (D7 +14% with wager) but repairable breaks prevent the post-break cliff</td>
+<td>Duolingo, Silverman and Barasch 2023</td>
+</tr>
+<tr>
+<td>Behaviour-timed reminders (23.5 hours after last session), capped at 1-2 per day, auto-stop after 7 days, tone never shaming</td>
+<td>The published Duolingo cadence minus the guilt persona</td>
+<td>Duolingo, Memrise quiet mode</td>
+</tr>
+<tr>
+<td>Home and lock-screen widget showing today's status</td>
+<td>Half of widget users hold 6-month+ streaks</td>
+<td>Duolingo</td>
+</tr>
+<tr>
+<td>Offline lessons and audio</td>
+<td>Paywalled by most; expected by commuters</td>
+<td>Pimsleur, Babbel</td>
+</tr>
+<tr>
+<td>WCAG 2.2 AA from day one: no drag-only tasks, no timers by default, 44pt targets, AA contrast, transcripts for all audio, VoiceOver and TalkBack tested exercises, dyslexia font option</td>
+<td>Zero competitors meet this; documented exclusion of blind, motor-impaired, ADHD and older learners</td>
+<td>AppleVis complaints</td>
+</tr>
+<tr>
+<td>Transparent pricing: no-card trial, in-app cancel, renewal reminder 7 days before charge, clear free-tier caps</td>
+<td>The single loudest one-star theme category-wide</td>
+<td>ELSA, Babbel, Praktika complaints</td>
+</tr>
+<tr>
+<td>Progress dashboard tied to CEFR (a shareable level score)</td>
+<td>Duolingo Score sharing to LinkedIn shows demand for a credible number</td>
+<td>Duolingo Score, ELSA IELTS estimator</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="tier-2-key-differentiators">Tier 2: Key Differentiators</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Competitor shortcoming solved</th>
+<th>Design notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scaffolded speaking ladder inside every scene</strong>: repeat, answer with hint, say it another way, improvise. Learner or system moves up a rung when accuracy holds</td>
+<td>Apps are either fully scripted or fully open; no bridge to free speech</td>
+<td>Track rung per scenario; surface "you improvised for the first time" as a milestone</td>
+</tr>
+<tr>
+<td><strong>Correction style as a user setting</strong> (subtle in-flow, explicit interrupt, post-conversation debrief) plus "ask me to repeat the correction"</td>
+<td>Always-on nagging vs too-late recaps; only Langua offers this and only on web</td>
+<td>Default to post-conversation for A2, subtle for B1+</td>
+</tr>
+<tr>
+<td><strong>Every conversation leaves artifacts</strong>: error log grouped by grammar pattern, auto-generated SRS cards from mistakes, vocabulary you produced vs understood, and a level trajectory chart</td>
+<td>TalkPal, Praktika, Loora, Jumpspeak conversations evaporate</td>
+<td>The FSRS scheduler consumes conversation errors, not just lesson misses</td>
+</tr>
+<tr>
+<td><strong>Visible, editable tutor memory</strong> ("you work as a nurse in Hamburg, you struggle with dative after prepositions")</td>
+<td>Absence of memory is a named complaint; Langua is the only app that exposes it</td>
+<td>Show what the tutor remembers; let users delete or correct entries</td>
+</tr>
+<tr>
+<td><strong>Domain tracks for professional relocators</strong> (healthcare, engineering, IT, hospitality, trades) mapped to the telc B2 Pflege and Anerkennung requirements</td>
+<td>Served only by tiny niche apps and textbooks</td>
+<td>Content authored with domain experts; scenarios like Übergabe, Patientenaufklärung, Baustellenbesprechung</td>
+</tr>
+<tr>
+<td><strong>Exam mode</strong>: examiner-style AI for Goethe, telc, TestDaF and DTZ speaking parts with the real rubric, timed mocks, and rubric-based scores</td>
+<td>Mainstream apps have no exam-format practice</td>
+<td>Rubric transparency is the trust builder; show the criteria before the score</td>
+</tr>
+<tr>
+<td><strong>Life-admin scenarios for newcomers</strong> (Ausländerbehörde, Jobcenter, Kita registration, Hausarzt, Mietvertrag) with the actual forms and phrases</td>
+<td>Commercial apps ignore integration learners; vhs-Lernportal is the only reference</td>
+<td>Also the most shareable content for immigrant communities</td>
+</tr>
+<tr>
+<td><strong>Dialect and register selector</strong> for both tutor voice and recogniser expectation (Hochdeutsch, Austrian, Swiss; formal Sie vs informal du)</td>
+<td>Speak's American-only default is a repeated complaint; Langua's cloned voices are the only attempt</td>
+<td>Cloned voices from consenting regional speakers</td>
+</tr>
+<tr>
+<td><strong>Real native listening layer</strong>: short unscripted clips of real speakers with interactive dual transcripts, feeding the SRS</td>
+<td>Studio-clean audio leaves learners "useless" in real conversation</td>
+<td>Busuu and Memrise clips are the proof of demand; add scrubbing and sentence loop</td>
+</tr>
+<tr>
+<td><strong>Chat about your own content</strong>: import a work email, a Netflix subtitle file, a podcast episode, a news article; the tutor builds a lesson and conversation from it</td>
+<td>Only Langua and LingQ do this, both web-first and unstructured</td>
+<td>Strongest hook for the B1 to B2 plateau</td>
+</tr>
+<tr>
+<td><strong>Hands-free mode</strong> with CarPlay and Android Auto for conversation and review</td>
+<td>Pimsleur owns the pattern but with scripted, repetitive content</td>
+<td>Voice-only turn-taking with no screen dependency</td>
+</tr>
+<tr>
+<td><strong>Supervised human exchange</strong>: matched 15-minute structured sessions with a scenario card, AI moderation, no gender or location filters, no profile browsing, post-session AI debrief</td>
+<td>Tandem and HelloTalk at 2.7/5 for harassment, dating misuse and ghosting</td>
+<td>Removes the dating-app affordances that enable misuse</td>
+</tr>
+<tr>
+<td><strong>Heritage-speaker entry point</strong>: placement that starts from listening comprehension and targets production and literacy gaps</td>
+<td>Every app starts from zero</td>
+<td>Small persona, large loyalty</td>
+</tr>
+<tr>
+<td><strong>Human-authored core curriculum, AI for personalisation only, stated publicly</strong></td>
+<td>Duolingo's AI-first backlash created a trust opening; Babbel and Mango already position on this</td>
+<td>Publish who wrote and reviewed each unit</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="tier-3-delighters">Tier 3: Delighters</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Why it spreads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>"First improvised sentence" moment</strong>: the app captures and plays back the first time you answered without a hint, with a shareable card</td>
+<td>Emotionally bigger than any XP number; Speak users describe "the moment I felt I was actually talking"</td>
+</tr>
+<tr>
+<td><strong>Weekly voice diary</strong> (60 seconds, prompted) with a side-by-side playback of week 1 vs now</td>
+<td>Progress in speaking is invisible; hearing yourself improve is the proof learners crave</td>
+</tr>
+<tr>
+<td><strong>Monthly "Year in Review"-style speaking report</strong> showing minutes spoken, patterns fixed, words produced, with an XP-free shareable card</td>
+<td>Duolingo's most-shared asset is the percentile card; a speaking version is unowned</td>
+</tr>
+<tr>
+<td><strong>Friend Streak lite</strong>: pair with one friend or partner, not five, on a shared weekly goal</td>
+<td>Friend-driven win-back out-clicks app messages; a shared streak lifts daily completion 22%</td>
+</tr>
+<tr>
+<td><strong>Quiet mode toggle</strong>: turns off all animation, sound, badges and reminders in one tap</td>
+<td>Memrise's guilt-free view is loved; ADHD and older users ask for exactly this</td>
+</tr>
+<tr>
+<td><strong>Pronunciation "mouth cam" tips</strong>: when a phoneme fails three times, show a short native-speaker clip of the mouth position</td>
+<td>ELSA's most-praised feedback element</td>
+</tr>
+<tr>
+<td><strong>Say it three ways</strong>: after any correct answer, an optional prompt to rephrase (more formal, more casual, shorter)</td>
+<td>Trains flexibility, the real B2 skill, in 10 seconds</td>
+</tr>
+<tr>
+<td><strong>Scene remix</strong>: after finishing a scenario, one tap regenerates it with a twist (the waiter is rude, the train is cancelled)</td>
+<td>Kills the "same three phrases" repetition complaint</td>
+</tr>
+<tr>
+<td><strong>Streak Revival as an annual event</strong>, not a paid repair</td>
+<td>Duolingo's June 2026 one-off restored 15.4M streaks and re-accelerated DAU; scarcity is the point</td>
+</tr>
+<tr>
+<td><strong>Localised motivation copy</strong> tested per language market (German opt-in +8% with a research-backed framing)</td>
+<td>Cheap, measurable, and nobody but Duolingo does it</td>
+</tr>
+<tr>
+<td><strong>Community-corrected writing with reputation</strong>, opt-in, moderated, with the red-strikethrough green-rewrite UI</td>
+<td>Busuu's most unique feature and HelloTalk's best-liked UI, minus the volunteer-quality lottery</td>
+</tr>
+<tr>
+<td><strong>Regional culture snippets</strong> inside scenarios (why Germans say "Mahlzeit", what a Pfand machine does)</td>
+<td>The one content type learners screenshot and send to friends</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="appendix-a-evidence-highlights-by-source-type">Appendix A: Evidence highlights by source type</h2>
+<ul>
+<li><strong>SEC filings</strong>: Duolingo Q4 2025, Q1 2026 and Q2 2026 shareholder letters (CURR 84%, DAU 58.7M, paid subs 12.7M, Streak Revival 15.4M restores, Video Call moving into Super).</li>
+<li><strong>Duolingo research and blog</strong>: Half-Life Regression (2016), Birdbrain (2020), sleeping-recovering bandit for notifications (KDD 2020, +0.5% DAU, +2% new-user retention), streak research (Wager D7 +14%, Weekend Amulet +4%), widget post, copy-testing post (German opt-in +8%), Handbook.</li>
+<li><strong>Growth teardowns</strong>: Jorge Mazal in Lenny's Newsletter (CURR 6x lever, DAU 4.5x, leaderboards +17% learning time); Jackson Shuttleworth on Sub Club (23.5-hour reminder, 7-day stop, days 1-4 window).</li>
+<li><strong>Academic</strong>: Silverman and Barasch, Journal of Consumer Research 2023 (streak goal substitution and repair effect); CALICO Journal and Language Learning and Technology 2024 (Duolingo A2 completers reach Intermediate Low to High on reading and listening, speaking lags); Sutton and Webb 2026 meta-analysis on audiovisual input; Anki FSRS open benchmark (500-700M reviews).</li>
+<li><strong>Review sentiment</strong>: Trustpilot (Tandem 2.7, HelloTalk 2.7, Cambly 2.1, Jumpspeak 3.2, Busuu 4.3 with auto-renewal as top theme); AppleVis accessibility threads; Hacker News "An opinionated critique of Duolingo" (Oct 2025) and "Ask HN: Does Duolingo Work?"; Class Central and Android Authority on Energy; TechCrunch on the AI-first backlash.</li>
+<li><strong>Market data</strong>: Business of Apps and Sensor Tower (category $1.54B 2025, 327M downloads, top five at 58% share, 40%+ rival-user overlap with Duolingo); Forbes on Speak ($100M+ ARR); Airship 2025 push benchmarks.</li>
+</ul>
+<h2 id="appendix-b-caveats">Appendix B: Caveats</h2>
+<ul>
+<li>Prices are indicative and regionally variable; several are from third-party pricing guides rather than first-party pages.</li>
+<li>Reddit is poorly indexed; Reddit sentiment is drawn from secondary roundups and directly fetched Hacker News threads.</li>
+<li>Duolingo's "Explain My Answer went free in January 2026" and Video Call moving into Super are reported by third-party guides and the Q2 2026 letter respectively; verify before citing externally.</li>
+<li>Retention multipliers from teardown sites (for example "2x daily retention for streak holders") are unverified; Duolingo-published figures are marked as such.</li>
+</ul></main></div>
